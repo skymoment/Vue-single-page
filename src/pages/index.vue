@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <!-- <img alt="Vue logo" src="../../assets/logo.png"> -->
+    <img alt="Vue logo" src="@/assets/logo.png">
     <div class="title">I'm index</div>
   </div>
 </template>
@@ -11,13 +11,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '@/styles/theme.scss';
+
 .container {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $theme-color;
   /* margin-top: 60px; */
 }
 
