@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/theme.scss";
+@import '@/styles/custom-theme.scss';
 
 .container {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

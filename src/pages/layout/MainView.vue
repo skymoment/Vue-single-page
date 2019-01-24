@@ -24,15 +24,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '@/styles/theme.scss';
+<style lang="scss" scoped>
 
 .app-main {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: $theme-color;
   /* margin-top: 60px; */
 }
 </style>

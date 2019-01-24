@@ -38,12 +38,14 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+@import '@/styles/custom-theme.scss';
+
 .app-wrapper {
     position: relative;
     height: 100%;
     width: 100%;
     .sidebar-wrapper {
-        width: 200px;
+        width: 230px;
         position: fixed;
         top: 0;
         bottom: 0;
@@ -51,11 +53,12 @@ export default {
         z-index: 1001;
         overflow: hidden;
         transition: all .28s ease-out;
+        background-color: $left-menu-bg-color;
     }
     .main-container {
         min-height: 100%;
         transition: all .28s ease-out;
-        margin-left: 230px;
+        padding-left: 230px;
     }
 }
 </style>

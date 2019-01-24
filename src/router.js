@@ -42,6 +42,6 @@ let temp = [
   }]
 
 router.addRoutes(temp)
-router.routes.push(temp)
+// router.routes.push(temp)
 
 export default router
