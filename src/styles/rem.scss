@@ -1,0 +1,39 @@
+/**
+ * 移动端 rem 布局方案 sass 方法，需配合 index.js 使用
+ * @module knife/utils/rem/sass_scss
+ * @author bigfact
+ * @example @import 'node_modules/knife/utils/rem/sass.scss';
+ */
+
+/**
+ * 默认 html font-size 数值
+ * @name $htmlFontSize
+ * @example
+ * // 在导入 sass 文件前，复写 $htmlFontSize 变量，可更新布局基数
+ * // sass
+ * $htmlFontSize: 1000;
+ * 占位 @import 'node_modules/knife/utils/rem/sass.scss';
+ * html { font-size: $htmlFontSize() * 1px; }
+ * body { font-size: px2rem(14); }
+ * // css
+ * html { font-size: 1000px; }
+ * body { font-size: 0.014rem; }
+ */
+ $htmlFontSize: 100 !default;
+
+ /**
+  * px 单位值转换到 rem 单位值
+  * @function px2rem
+  * @param {Number} $px px 单位值
+  * @returns {String} $px px 单位值在当前布局方案下对应的 rem 单位值
+  * @example
+  * // 布局基数为默认 100
+  * // sass
+  * .fs16 { font-size: px2rem(16); }
+  * // css
+  * .fs16 { font-size: 0.16rem; }
+  */
+ @function px2rem($px) {
+   @return $px / $htmlFontSize * 1rem;
+ }
+ 

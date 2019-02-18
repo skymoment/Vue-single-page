@@ -11,7 +11,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/styles/theme.scss';
 
 .container {
@@ -21,9 +21,8 @@ export default {
   text-align: center;
   color: $theme-color;
   /* margin-top: 60px; */
-}
-
-.title {
-  font-size: 50px;
+  .title {
+    font-size: px2rem(50);
+  }
 }
 </style>

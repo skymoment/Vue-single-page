@@ -2,11 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router.js'
 
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
+// rem
+import px2rem from './utils/rem'
+px2rem()
 
-// 使用 Vuetify 移动端框架
-Vue.use(Vuetify)
 Vue.config.productionTip = false
 
 new Vue({
