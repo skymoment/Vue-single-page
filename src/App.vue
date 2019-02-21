@@ -18,7 +18,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  width: 100%;
   max-width: 768px;
   min-width: 375px;
   margin: 0 auto;

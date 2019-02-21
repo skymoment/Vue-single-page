@@ -22,8 +22,6 @@ const layoutRate = 100
  * // css
  * body { font-size: 0.14rem; }
  * // js
- * import px2rem from 'knife/utils/rem'
- * px2rem()
  */
 export default function(baseWidth = 375, maxWidth = 768, rate = layoutRate, maxRate = layoutRate) {
   function setHtmlFontSize() {

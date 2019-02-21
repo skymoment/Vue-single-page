@@ -27,26 +27,35 @@ export function headers() {
 
 const instance = axios.create({
   baseURL: getHost(),
-  timeout: 60,
+  timeout: 6000,
   headers: headers()
 })
 
 export function post(url, params, success) {
-  let requestUrl = host + '/' + url
+  let requestUrl = getHost() + '/' + url
   instance.post(requestUrl, params).then(res => {
-    console.log(res)
-    success(res)
+    success(res.data)
   }).catch(error => {
-    console.log(error)
+    logError(error)
   })
 }
 
 export function get(url, success) {
-  let requestUrl = host + '/' + url
+  let requestUrl = getHost() + '/' + url
   instance.get(requestUrl).then(res => {
-    console.log(res)
-    success(res)
+    success(res.data)
   }).catch(error => {
-    console.log(error)
+    logError(error)
   })
+}
+
+function logError(error) {
+  console.log(error)
+}
+
+export default {
+  getHost,
+  headers,
+  post,
+  get
 }

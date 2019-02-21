@@ -6,12 +6,12 @@ Vue.use(VueRouter)
 
 const index = {
   path: '/',
-  name: '首页',
+  name: '推广页一',
   component: resolve => {
     require.ensure(
-      ['@/pages/index.vue'],
+      ['@/pages/spread_1.vue'],
       () => {
-        resolve(require('@/pages/index.vue'))
+        resolve(require('@/pages/spread_1.vue'))
       }
     );
   }
