@@ -19,7 +19,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   max-width: 768px;
-  min-width: 375px;
+  min-width: 320px;
   margin: 0 auto;
   background-color: white;
 }

@@ -23,7 +23,7 @@ const layoutRate = 100
  * body { font-size: 0.14rem; }
  * // js
  */
-export default function(baseWidth = 375, maxWidth = 768, rate = layoutRate, maxRate = layoutRate) {
+export default function(baseWidth = 320, maxWidth = 768, rate = layoutRate, maxRate = layoutRate) {
   function setHtmlFontSize() {
     let screenWidth = window.innerWidth
     let fontSize = screenWidth < maxWidth ? screenWidth / baseWidth * rate : maxWidth / baseWidth * rate

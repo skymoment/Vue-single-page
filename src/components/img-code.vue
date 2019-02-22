@@ -10,7 +10,7 @@
               <img :src="img_src">
           </div>
           <div class="input-container">
-            <input v-model="captcha" style="text-align: center;font-size: 15px; margin-top: 5px;width:140px; height: 40px;" type="text" placeholder="请输入图片中的文字">
+            <input v-model="captcha" style="text-align: center;font-size: 15px; width:140px; height: 50px; background: none !important; outline: none !important; border-width: 0px; border: 0px;	margin:0;	padding:0;" type="text" placeholder="请输入图片中的文字">
           </div>
         </div>
         <div class="line"></div>
@@ -80,7 +80,9 @@ export default {
           // 验证码失效
           this.getImage()
           this.captcha = ''
-        } 
+        } else {
+          this.$layer.msg(res.message)
+        }
       })
     },
     // 获取图形验证码
@@ -94,6 +96,8 @@ export default {
           let captcha = res.data.captcha
           console.log(captcha)
           this.img_src = captcha
+        } else {
+          this.$layer.msg(res.message)
         }
       })
     },

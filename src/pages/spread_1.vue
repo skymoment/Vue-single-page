@@ -8,7 +8,7 @@
       </div>
       <div class="input-box">
         <p class="input-box-tip">验证码</p>
-        <input v-model="code" class="input-box-input" type="tel" placeholder="请输入验证码">
+        <input v-model="code" class="input-box-input" style="width: 100px;" type="tel" placeholder="请输入验证码">
         <div @click="sendSMS" class="input-box-btn"><p class="btn-tip">{{sms.msg}}</p></div>
         <div style="clear: both;"></div>
       </div>
@@ -18,7 +18,7 @@
     <div v-show="isShowDialog" class="dialog-container">
       <div class="dialog">
         <div class="dialog-close" @click="isShowDialog = false"></div>
-        <div class="dialog-btn"><p class="dialog-btn-tip">点击拿钱</p></div>
+        <div class="dialog-btn" @click="dialogBtnClick"><p class="dialog-btn-tip">点击拿钱</p></div>
       </div>
     </div>
     <!-- 图形验证码 -->
@@ -45,7 +45,7 @@ export default {
       isShowDialog: false,
       isShowCaptcha: false,
       captcha_token: '',
-      scenario: 'register',
+      scenario: 'login',
       mobile:'',
       code: '',
       sms: {
@@ -57,16 +57,33 @@ export default {
   },
   methods: {
     submit() {
+      if (this.mobile.length < 11) {
+        this.$layer.msg('手机号位数需为11位')
+        return
+      }
+
+      if (this.code.length < 4) {
+        this.$layer.msg('验证码不合法')
+        return
+      }
+
       let params = {
           mobile: this.mobile,
           code: this.code,
           ref: this.$route.query.ref || ''
       }
+      let loader = this.$loading.show()
       this.$ajax.post('auth/login-by-code', params, (res) => {
+        loader.hide()
         if (res.code == 200) {
           this.isShowDialog = true
+        } else {
+          this.$layer.msg(res.message)
         }
       })
+    },
+    dialogBtnClick() {
+      window.location.href = 'http://m.jdh.daidianhua.com'
     },
     /**
      * 短信验证码
@@ -74,7 +91,7 @@ export default {
     sendSMS() {
       console.log(this.mobile)
       if (this.mobile.length < 11) {
-        
+        this.$layer.msg('手机号位数需为11位')
         return
       }
 
@@ -107,6 +124,8 @@ export default {
         }
         if (res.code == 40022) {
            this.showCaptcha()
+        } else {
+          this.$layer.msg(res.message)
         }
       })
     },
@@ -142,7 +161,7 @@ export default {
   top: 0px;
   bottom: 0px;
   width: 100%;
-  min-width: 375px;
+  min-width: 320px;
   max-width: 768px;
 
   .input-box {
@@ -164,12 +183,13 @@ export default {
       font-size: px2rem(16);
       line-height: px2rem(50);
       color: white;
+      text-align: center;
     }
   }
   .input-box-tip {
     float: left; 
     padding-left: px2rem(15); 
-    padding-right: px2rem(20);
+    padding-right: px2rem(15);
   }
   .input-box-input {
     float: left; 
@@ -192,8 +212,8 @@ export default {
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
+    min-width: 320px;
+    max-width: 768px;
     background-color: rgba(0, 0, 0, 0.7);
     .dialog {
       background: url('../assets/spread_1/s1_dialog_back.png') no-repeat;
@@ -223,7 +243,6 @@ export default {
         .dialog-btn-tip {
           font-size: px2rem(16);
           color: white;
-          padding: 0 0;
         }
       }
     }
