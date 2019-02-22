@@ -36,9 +36,9 @@
 import ImgCode from '../components/img-code.vue'
 
 export default {
-  name: "container",
+  name: 'container',
   components: {
-    imgCode: ImgCode,
+    imgCode: ImgCode
   },
   data() {
     return {
@@ -46,7 +46,7 @@ export default {
       isShowCaptcha: false,
       captcha_token: '',
       scenario: 'login',
-      mobile:'',
+      mobile: '',
       code: '',
       sms: {
         time: 60,
@@ -68,14 +68,14 @@ export default {
       }
 
       let params = {
-          mobile: this.mobile,
-          code: this.code,
-          ref: this.$route.query.ref || ''
+        mobile: this.mobile,
+        code: this.code,
+        ref: this.$route.query.ref || ''
       }
       let loader = this.$loading.show()
       this.$ajax.post('auth/login-by-code', params, (res) => {
         loader.hide()
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.isShowDialog = true
         } else {
           this.$layer.msg(res.message)
@@ -103,27 +103,27 @@ export default {
         scenario: this.scenario,
         captcha_token: this.captcha_token
       }
-      if (!this.captcha_token || this.captcha_token === '' ) {
+      if (!this.captcha_token || this.captcha_token === '') {
         params.captcha_token = null
       }
       this.$ajax.post('auth/smscode', params, (res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           console.log('发送成功')
           this.normal = true
           this.sms.timer = setInterval(() => {
             this.sms.time = this.sms.time - 1
-            this.sms.msg = this.sms.time + "s"
+            this.sms.msg = this.sms.time + 's'
             if (this.sms.time <= 0) {
-              this.sms.msg = "重新发送"
+              this.sms.msg = '重新发送'
               this.sms.time = 60
               this.normal = false
               clearInterval(this.sms.timer)
             }
-          }, 1000);
+          }, 1000)
           return
         }
-        if (res.code == 40022) {
-           this.showCaptcha()
+        if (res.code === 40022) {
+          this.showCaptcha()
         } else {
           this.$layer.msg(res.message)
         }

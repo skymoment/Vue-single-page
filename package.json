@@ -19,7 +19,11 @@
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-service": "^3.0.5",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
     "css-loader": "^2.1.0",
+    "eslint": "^5.14.1",
+    "eslint-plugin-vue": "^5.2.2",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.17"
@@ -30,18 +34,24 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/recommended",
-      "eslint:recommended"
+      "plugin:vue/essential",
+      "@vue/standard"
     ],
     "rules": {
-      "no-console": "off",
-      "no-restricted-syntax": [
+      "arrow-parens": 0,
+      "generator-star-spacing": 0,
+      "space-before-function-paren": 0,
+      "no-trailing-spaces": 0,
+      "eol-last": 0,
+      "no-multi-spaces": [
         "error",
         {
-          "selector": "CallExpression[callee.object.name='console'][callee.property.name=/^(log|warn|error|info|trace)$/]",
-          "message": "Unexpected property on console object was called"
+          "ignoreEOLComments": true
         }
       ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
     }
   },
   "postcss": {

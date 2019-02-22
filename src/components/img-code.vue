@@ -72,11 +72,11 @@ export default {
         captcha: this.captcha
       }
       this.$ajax.post('auth/validate-captcha', params, (res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           let captcha_token = res.data.captcha_token
           this.$emit('getCaptchaToken', captcha_token)
           this.showImageCode = false
-        } else if(res.code == 40016) {
+        } else if(res.code === 40016) {
           // 验证码失效
           this.getImage()
           this.captcha = ''
@@ -92,7 +92,7 @@ export default {
         scenario: this.scenario,
       }
       this.$ajax.post('auth/captcha', params, (res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           let captcha = res.data.captcha
           console.log(captcha)
           this.img_src = captcha
