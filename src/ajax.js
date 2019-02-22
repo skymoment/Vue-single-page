@@ -1,4 +1,5 @@
 const axios = require('axios')
+import uuid from './utils/uuid'
 
 const domain = {
   "http://m.jdh.daidianhua.com": "http://api.jdh.daidianhua.com",
@@ -20,7 +21,8 @@ export function headers() {
   let headers = {
     'Accept': 'application/json',
     'X-App-Id': 'jdh_h5',
-    'X-Access-Token': ''
+    'X-Access-Token': '',
+    'X-Session-Id': uuid.getUUID()
   }
   return headers
 }
