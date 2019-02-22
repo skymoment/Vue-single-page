@@ -41,6 +41,8 @@ export default {
     imgCode: ImgCode
   },
   data() {
+    let ref = this.$route.query.ref || ''
+    this.$viewLog.log(1, ref)
     return {
       isShowDialog: false,
       isShowCaptcha: false,
@@ -52,7 +54,8 @@ export default {
         time: 60,
         timer: null,
         msg: '获取验证码'
-      }
+      },
+      ref: ref
     }
   },
   methods: {
@@ -70,19 +73,21 @@ export default {
       let params = {
         mobile: this.mobile,
         code: this.code,
-        ref: this.$route.query.ref || ''
+        ref: this.ref
       }
       let loader = this.$loading.show()
       this.$ajax.post('auth/login-by-code', params, (res) => {
         loader.hide()
         if (res.code === 200) {
           this.isShowDialog = true
+          this.$viewLog.log(3, this.ref, this.mobile)
         } else {
           this.$layer.msg(res.message)
         }
       })
     },
     dialogBtnClick() {
+      this.$viewLog.log(4, this.ref, this.mobile)
       window.location.href = 'http://m.jdh.daidianhua.com'
     },
     /**
@@ -109,6 +114,7 @@ export default {
       this.$ajax.post('auth/smscode', params, (res) => {
         if (res.code === 200) {
           console.log('发送成功')
+          this.$viewLog.log(2, this.ref, this.mobile)
           this.normal = true
           this.sms.timer = setInterval(() => {
             this.sms.time = this.sms.time - 1
