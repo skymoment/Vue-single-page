@@ -13,7 +13,8 @@
     "vue": "^2.5.17",
     "vue-layer": "^0.9.10",
     "vue-loading-overlay": "^3.1.1",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "wangeditor": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.5",

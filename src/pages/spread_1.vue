@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <div style="margin-top: 88%;">
+    <editor></editor>
+    <div v-show="false" style="margin-top: 88%;">
       <div class="input-box">
         <p class="input-box-tip">手机号</p>
         <input v-model="mobile" class="input-box-input" type="tel" placeholder="请输入手机号码" maxlength="11">
@@ -34,11 +35,17 @@
 
 <script>
 import ImgCode from '../components/img-code.vue'
+import Editor from '../components/Editor.vue'
 
 export default {
   name: 'container',
+
   components: {
+    Editor,
     imgCode: ImgCode
+  },
+  created() {
+ 
   },
   data() {
     let ref = this.$route.query.ref || ''
@@ -160,15 +167,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   height: 100%;
-  background: url('../assets/spread_1/s1_back.png') no-repeat;
-  background-size: 100%;
-  background-color: #2B019A;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  width: 100%;
-  min-width: 320px;
-  max-width: 768px;
+  // background: url('../assets/spread_1/s1_back.png') no-repeat;
+  // background-size: 100%;
+  // background-color: #2B019A;
+  // position: absolute;
+  // top: 0px;
+  // bottom: 0px;
+  // width: 100%;
+  // min-width: 320px;
+  // max-width: 768px;
 
   .input-box {
     margin-left: px2rem(20);
